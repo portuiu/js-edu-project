@@ -16,21 +16,25 @@ xhr.onerror = function(){
 
 xhr.onload = function(){
     if (xhr.status == 200) {
-        var arr = JSON.parse(xhr.responseText);
+        try {
+                var arr = JSON.parse(xhr.responseText);
 
-        var ol = document.createElement("ol");
+                var ol = document.createElement("ol");
 
-        for (var i = 0; i < arr.length; ++i) {
-            var li = document.createElement("li");
-            var a = document.createElement("a");
-            a.textContent = arr[i].login;
-            a.setAttribute("href", arr[i].html_url);
-            li.appendChild(a);
-            ol.appendChild(li);
-        }
+                for (var i = 0; i < arr.length; ++i) {
+                    var li = document.createElement("li");
+                    var a = document.createElement("a");
+                    a.textContent = arr[i].login;
+                    a.setAttribute("href", arr[i].html_url);
+                    li.appendChild(a);
+                    ol.appendChild(li);
+                }
 
-        document.body.removeChild(message);
-        document.body.appendChild(ol);
+                document.body.removeChild(message);
+                document.body.appendChild(ol);
+            } catch(err){
+                message.textContent = "Sorry, server error :("
+            };
     } else {
         message.textContent = xhr.statusText;
     }

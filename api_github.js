@@ -1,13 +1,13 @@
-/* Подключенные модули
+/*РџРѕРґРєР»СЋС‡РµРЅРЅС‹Рµ РјРѕРґСѓР»Рё 
 var express = require('express');
 var router = express.Router();
 var https = require("https");*/
 
-// Запросник
+//Р—Р°РїСЂРѕСЃРЅРёРє
 router.get("/get_about", function(req, res){
     var options = {
         host: 'api.github.com',
-        path: '/repos/portuiu/js-edu-project/collaborators?access_token=' + key, // Ключ для доступа к информации
+        path: '/repos/portuiu/js-edu-project/collaborators?access_token=' + key, // РљР»СЋС‡ РґР»СЏ РґРѕСЃС‚СѓРїР° Рє РёРЅС„РѕСЂРјР°С†РёРё
         port: 443,
         headers:
         {"User-Agent": "weather"}

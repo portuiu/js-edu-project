@@ -1,35 +1,33 @@
+var express = require('express'),
+    https = require("https");
 
-$(document).ready(function(){
+getter = function(){
+    var options = {
+        host: 'api.github.com',
+        path: '/repos/portuiu/js-edu-project/collaborators?access_token=' + key, // Ключ для доступа к информации
+        port: 443,
+        headers:
+        {"User-Agent": "weather"}
+    };
 
-    $.ajax({
-        url: "http://js-team.azurewebsites.net/get_about",
-        dataType: 'json',
-        beforeSend: function(){
-            var message = $("<p>Loading...</p>");
-            message.attr("id","message");
+    var callback = function(response) {
+        var str = '';
 
-            $("#about").find("h1").after(message);
-        },
-        success: function(data){
-            var message = $("#message");
-            var list = $("<ol></ol>");
 
-            for (var i=0; i<data.length; ++i){
-                var li = $("<li></li>");
-                var a = $("<a>"+data[i].login+"</a>");
-                a.attr("href",data[i].html_url);
-                li.append(a);
-                list.append(li);
-            }
+        response.on('data', function (chunk) {
+            str += chunk;
+        });
 
-            message.after(list);
-            message.remove();
-        },
-        error: function(err){
-            var message = $("#message");
-            message.text("Sorry, server error...")
-        },
-        async: true
-    });
 
-});
+        response.on('end', function () {
+            res.setHeader("Content-Type","application/json");
+            res.end(str);
+        });
+    };
+
+    var request = https.request(options, callback);
+
+    request.end();
+})
+
+module.exports = getter;

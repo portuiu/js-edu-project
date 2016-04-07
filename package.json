@@ -7,7 +7,7 @@
     "url": "https://github.com/portuiu/js-edu-project.git"
   },
   "scripts": {
-    "start": "node ./app.js azure"
+    "start": "node app.js azure"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

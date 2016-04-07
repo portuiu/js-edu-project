@@ -1,7 +1,14 @@
 {
   "name": "js-edu-project",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/portuiu/js-edu-project.git"
+  },
+  "engines": {
+    "node": "4.2.6"
+  },
   "scripts": {
     "start": "node ./app.js azure"
   },
@@ -13,5 +20,6 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "licence": "GPL"
 }

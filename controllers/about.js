@@ -1,11 +1,11 @@
 var express = require('express');
 var https = require('https');
 var router  = express.Router();
+var config = require('../config');
 
 var options = {
     host: 'api.github.com',
-    path: '/repos/portuiu/js-edu-project/collaborators?access_token=' +
-    'a76a7d69e589eef5ea9a84567622691420fc38a5', // Ключ для доступа к информации
+    path: '/repos/portuiu/js-edu-project/collaborators?access_token=' + config.token, // Ключ для доступа к информации
     port: 443,
     headers:
     {'User-Agent':'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)'}
